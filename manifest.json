@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "FreeWebpilotInGPT35",
+    "version": "1.0",
+    "permissions": [
+        "scripting",
+        "webRequest"
+    ],
+    "host_permissions": [
+        "*://*/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["content.js"],
+            "matches": ["https://chat.openai.com/*"]
+        }
+    ],
+    "content_scripts": [
+        {
+            "matches": ["https://chat.openai.com/*"],
+            "js": ["inject.js"],
+            "all_frames": true
+        }
+    ],
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    }
+}
